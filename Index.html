@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>환율 계산기</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #f0f4f8, #e0ecf4);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+
+    label {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    input, select {
+      font-size: 20px;
+      padding: 10px;
+      width: 100%;
+      margin: 10px 0 20px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #1e8449;
+    }
+
+    .ads {
+      margin-top: 50px;
+      width: 100%;
+      height: 90px;
+      background-color: #f9f9f9;
+      border: 2px dashed #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #777;
+      font-size: 16px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>환율 계산기</h1>
+
+    <label for="usdAmount">💵 달러 금액 ($):</label>
+    <input type="number" id="usdAmount" value="100">
+
+    <label for="currencySelect">💱 변환할 화폐:</label>
+    <select id="currencySelect">
+      <option value="KRW">대한민국 원 (KRW)</option>
+      <option value="JPY">일본 엔 (JPY)</option>
+      <option value="EUR">유로 (EUR)</option>
+      <option value="GBP">영국 파운드 (GBP)</option>
+      <option value="CNY">중국 위안 (CNY)</option>
+      <option value="UZS">우즈베키스탄 숨 (UZS)</option>
+    </select>
+
+    <div id="result">결과:</div>
+
+    <div class="ads">[광고 자리] AdSense 광고가 여기에 표시됩니다.</div>
+  </div>
+
+  <script>
+    async function fetchExchangeRates() {
+      const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+      return await response.json();
+    }
+
+    function formatNumber(num) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    async function calculate() {
+      const amount = parseFloat(document.getElementById('usdAmount').value);
+      const targetCurrency = document.getElementById('currencySelect').value;
+      const data = await fetchExchangeRates();
+      const rate = data.rates[targetCurrency];
+      const converted = formatNumber((amount * rate).toFixed(2));
+      document.getElementById('result').textContent = `결과: ${converted} ${targetCurrency}`;
+    }
+
+    document.getElementById('usdAmount').addEventListener('input', calculate);
+    document.getElementById('currencySelect').addEventListener('change', calculate);
+
+    calculate();
+  </script>
+</body>
+</html>
