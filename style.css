@@ -1,0 +1,186 @@
+/* Government Job Portal - Static Site CSS */
+
+:root {
+    --agency-mosf: #2c5530;
+    --agency-mois: #1f4e79;
+    --agency-me: #2d5016;
+    --agency-moel: #8b4513;
+    --agency-moe: #4a90e2;
+    --agency-msit: #6a1b9a;
+    --agency-mofa: #d32f2f;
+    --agency-mnd: #2e7d32;
+    --agency-moj: #7b1fa2;
+    --agency-mohw: #00796b;
+    --agency-molit: #f57c00;
+    --agency-mafra: #689f38;
+}
+
+/* Job cards */
+.job-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.job-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-card .card-body {
+    flex: 1;
+}
+
+.agency-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Agency-specific colors */
+.job-card[data-agency="기획재정부"] .agency-badge {
+    background-color: var(--agency-mosf) !important;
+}
+
+.job-card[data-agency="행정안전부"] .agency-badge {
+    background-color: var(--agency-mois) !important;
+}
+
+.job-card[data-agency="환경부"] .agency-badge {
+    background-color: var(--agency-me) !important;
+}
+
+.job-card[data-agency="고용노동부"] .agency-badge {
+    background-color: var(--agency-moel) !important;
+}
+
+.job-card[data-agency="교육부"] .agency-badge {
+    background-color: var(--agency-moe) !important;
+}
+
+.job-card[data-agency="과학기술정보통신부"] .agency-badge {
+    background-color: var(--agency-msit) !important;
+}
+
+.job-card[data-agency="외교부"] .agency-badge {
+    background-color: var(--agency-mofa) !important;
+}
+
+.job-card[data-agency="국방부"] .agency-badge {
+    background-color: var(--agency-mnd) !important;
+}
+
+.job-card[data-agency="법무부"] .agency-badge {
+    background-color: var(--agency-moj) !important;
+}
+
+.job-card[data-agency="보건복지부"] .agency-badge {
+    background-color: var(--agency-mohw) !important;
+}
+
+.job-card[data-agency="국토교통부"] .agency-badge {
+    background-color: var(--agency-molit) !important;
+}
+
+.job-card[data-agency="농림축산식품부"] .agency-badge {
+    background-color: var(--agency-mafra) !important;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .jumbotron h1 {
+        font-size: 2rem;
+    }
+    
+    .jumbotron .row > div {
+        margin-bottom: 1rem;
+    }
+    
+    .card-title {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+    
+    .btn-group-vertical {
+        width: 100%;
+    }
+}
+
+/* Card layout improvements */
+.card-header {
+    padding: 0.75rem 1rem;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-footer {
+    padding: 0.75rem 1rem;
+    background-color: transparent;
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* Card title ellipsis for long titles */
+.card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 2.5rem;
+}
+
+/* Jumbotron styling for dark theme */
+.jumbotron {
+    background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-info) 100%);
+}
+
+/* Smooth transitions */
+.btn {
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon alignment */
+.fas {
+    width: 1rem;
+    text-align: center;
+}
+
+/* Navbar brand styling */
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Loading animation */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* PWA styles */
+@media (display-mode: standalone) {
+    .navbar {
+        padding-top: env(safe-area-inset-top);
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar, .card-footer, .pagination, footer {
+        display: none !important;
+    }
+    
+    .job-card {
+        break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+}

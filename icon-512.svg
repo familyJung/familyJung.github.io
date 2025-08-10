@@ -1,0 +1,22 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" fill="#1f4e79" rx="56"/>
+  <g fill="white">
+    <!-- Building icon -->
+    <rect x="128" y="128" width="256" height="256" fill="none" stroke="white" stroke-width="8"/>
+    <rect x="128" y="128" width="256" height="42" fill="white"/>
+    <!-- Windows -->
+    <rect x="170" y="214" width="32" height="32" fill="white"/>
+    <rect x="224" y="214" width="32" height="32" fill="white"/>
+    <rect x="278" y="214" width="32" height="32" fill="white"/>
+    <rect x="170" y="268" width="32" height="32" fill="white"/>
+    <rect x="224" y="268" width="32" height="32" fill="white"/>
+    <rect x="278" y="268" width="32" height="32" fill="white"/>
+    <rect x="170" y="322" width="32" height="32" fill="white"/>
+    <rect x="224" y="322" width="32" height="32" fill="white"/>
+    <rect x="278" y="322" width="32" height="32" fill="white"/>
+    <!-- Door -->
+    <rect x="232" y="342" width="48" height="42" fill="#1f4e79"/>
+    <!-- Flag -->
+    <rect x="200" y="138" width="112" height="24" fill="#d32f2f"/>
+  </g>
+</svg>
